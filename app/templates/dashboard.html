@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="text-center my-4">Data Visualization Dashboard</h1>
+    
+    <!-- Filters -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Filters</h5>
+                    <div class="row">
+                        <!-- First Row of Filters -->
+                        <div class="col-md-3 mb-3">
+                            <label for="pestleFilter" class="form-label">PEST</label>
+                            <select class="form-select" id="pestleFilter">
+                                <option value="">All PEST Categories</option>
+                                {% for pest in filters.pestle %}
+                                    {% if pest %}
+                                        <option value="{{ pest }}">{{ pest }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="sourceFilter" class="form-label">Source</label>
+                            <select class="form-select" id="sourceFilter">
+                                <option value="">All Sources</option>
+                                {% for source in filters.source %}
+                                    {% if source %}
+                                        <option value="{{ source }}">{{ source }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="countryFilter" class="form-label">Country</label>
+                            <select class="form-select" id="countryFilter">
+                                <option value="">All Countries</option>
+                                {% for country in filters.countries %}
+                                    {% if country %}
+                                        <option value="{{ country }}">{{ country }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="cityFilter" class="form-label">City</label>
+                            <select class="form-select" id="cityFilter">
+                                <option value="">All Cities</option>
+                                {% for city in filters.cities %}
+                                    {% if city %}
+                                        <option value="{{ city }}">{{ city }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <!-- Second Row of Filters -->
+                        <div class="col-md-3 mb-3">
+                            <label for="endYearFilter" class="form-label">End Year</label>
+                            <select class="form-select" id="endYearFilter">
+                                <option value="">All Years</option>
+                                {% for year in filters.end_year %}
+                                    {% if year %}
+                                        <option value="{{ year }}">{{ year }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="topicFilter" class="form-label">Topic</label>
+                            <select class="form-select" id="topicFilter">
+                                <option value="">All Topics</option>
+                                {% for topic in filters.topics %}
+                                    {% if topic %}
+                                        <option value="{{ topic }}">{{ topic }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="sectorFilter" class="form-label">Sector</label>
+                            <select class="form-select" id="sectorFilter">
+                                <option value="">All Sectors</option>
+                                {% for sector in filters.sectors %}
+                                    {% if sector %}
+                                        <option value="{{ sector }}">{{ sector }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="regionFilter" class="form-label">Region</label>
+                            <select class="form-select" id="regionFilter">
+                                <option value="">All Regions</option>
+                                {% for region in filters.regions %}
+                                    {% if region %}
+                                        <option value="{{ region }}">{{ region }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <!-- Reset Button -->
+                        <div class="col-12 mt-3">
+                            <button class="btn btn-secondary" id="resetFilters">Reset All Filters</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Intensity by Region</h5>
+                    <div id="intensityChart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Likelihood by Year</h5>
+                    <div id="likelihoodChart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
